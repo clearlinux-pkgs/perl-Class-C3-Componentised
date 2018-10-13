@@ -1,0 +1,5 @@
+1.001002
+perl(Class::Inspector)
+perl(MRO::Compat)
+perl(Sub::Uplevel)
+perl(Test::Exception)

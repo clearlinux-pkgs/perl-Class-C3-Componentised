@@ -4,13 +4,13 @@
 #
 Name     : perl-Class-C3-Componentised
 Version  : 1.001002
-Release  : 1
+Release  : 2
 URL      : https://cpan.metacpan.org/authors/id/H/HA/HAARG/Class-C3-Componentised-1.001002.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/H/HA/HAARG/Class-C3-Componentised-1.001002.tar.gz
 Summary  : 'Load mix-ins or components to your C3-based class'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
-Requires: perl-Class-C3-Componentised-man
+BuildRequires : buildreq-cpan
 BuildRequires : perl(Class::Inspector)
 BuildRequires : perl(MRO::Compat)
 BuildRequires : perl(Sub::Uplevel)
@@ -21,12 +21,13 @@ NAME
 Class::C3::Componentised - Load mix-ins or components to your C3-based
 class
 
-%package man
-Summary: man components for the perl-Class-C3-Componentised package.
-Group: Default
+%package dev
+Summary: dev components for the perl-Class-C3-Componentised package.
+Group: Development
+Provides: perl-Class-C3-Componentised-devel = %{version}-%{release}
 
-%description man
-man components for the perl-Class-C3-Componentised package.
+%description dev
+dev components for the perl-Class-C3-Componentised package.
 
 
 %prep
@@ -55,9 +56,9 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 if test -f Makefile.PL; then
-make pure_install PERL_INSTALL_ROOT=%{buildroot}
+make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
-./Build install --installdirs=site --destdir=%{buildroot}
+./Build install --installdirs=vendor --destdir=%{buildroot}
 fi
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
@@ -66,10 +67,10 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/Class/C3/Componentised.pm
-/usr/lib/perl5/site_perl/5.26.1/Class/C3/Componentised/ApplyHooks.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Class/C3/Componentised.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Class/C3/Componentised/ApplyHooks.pm
 
-%files man
+%files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/Class::C3::Componentised.3
 /usr/share/man/man3/Class::C3::Componentised::ApplyHooks.3
