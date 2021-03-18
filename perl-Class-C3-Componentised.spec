@@ -4,7 +4,7 @@
 #
 Name     : perl-Class-C3-Componentised
 Version  : 1.001002
-Release  : 16
+Release  : 17
 URL      : https://cpan.metacpan.org/authors/id/H/HA/HAARG/Class-C3-Componentised-1.001002.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/H/HA/HAARG/Class-C3-Componentised-1.001002.tar.gz
 Summary  : 'Load mix-ins or components to your C3-based class'
@@ -87,5 +87,5 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.3/Class/C3/Componentised.pm
-/usr/lib/perl5/vendor_perl/5.30.3/Class/C3/Componentised/ApplyHooks.pm
+/usr/lib/perl5/vendor_perl/5.32.1/Class/C3/Componentised.pm
+/usr/lib/perl5/vendor_perl/5.32.1/Class/C3/Componentised/ApplyHooks.pm
